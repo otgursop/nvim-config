@@ -23,15 +23,15 @@ return {
     },
     config = function()
       local cmp = require("cmp")
-      
+
       local autopairs = require("nvim-autopairs")
       autopairs.setup({})
-      
+
       cmp.event:on(
         'confirm_done',
         require('nvim-autopairs.completion.cmp').on_confirm_done()
       )
-      
+
       cmp.setup({
         snippet = {
           expand = function(args)

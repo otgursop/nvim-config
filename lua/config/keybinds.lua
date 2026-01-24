@@ -1,53 +1,5 @@
 vim.g.mapleader = " "
 
--- Replace in current line only
-vim.keymap.set('n', '<leader>r', function()
-  local from = vim.fn.input('Replace what: ')
-  if from == '' then return end
-
-  vim.cmd('normal! _')
-  local found = vim.fn.search(from, 'cnW') > 0
-  vim.cmd('normal! ^')
-
-  if not found then
-    print('No matches found for "' .. from .. '"')
-    return
-  end
-
-  local to = vim.fn.input('Replace with (' .. from .. '): ')
-  vim.cmd(':s/' .. vim.fn.escape(from, '/') .. '/' .. vim.fn.escape(to, '/') .. '/g')
-end, { desc = 'Replace in current line' })
-
--- Replace in entire file
-local function replace_in_entire_file()
-    local from = vim.fn.input('Replace what (whole file): ')
-    if from == '' then return end
-
-    vim.cmd('silent! let v:save_pos = winsaveview()')
-    vim.cmd(string.format('silent! %%s/%s//gn', vim.fn.escape(from, '/')))
-    local matches = vim.fn.getline(1, '$')
-    local count = 0
-
-    for _, line in ipairs(matches) do
-        local _, matchCount = line:gsub(vim.fn.escape(from, '/'), '')
-        count = count + matchCount
-    end
-
-    vim.cmd('silent! call winrestview(v:save_pos)')
-
-    if count == 0 then
-        print('No matches found for "' .. from .. '"')
-        return
-    end
-
-    local to = vim.fn.input('Replace "' .. from .. '" (' .. count .. ' matches) with: ')
-    local command = string.format('%%s/%s/%s/g', vim.fn.escape(from, '/'), vim.fn.escape(to, '/'))
-    vim.cmd(command)
-    print('Replaced ' .. count .. ' occurrences')
-end
-
-vim.keymap.set('n', '<leader>R', replace_in_entire_file, { desc = 'Replace all in file' })
-
 -- Highlight yanked text
 vim.api.nvim_create_augroup("highlight_yank", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -63,6 +15,19 @@ vim.keymap.set('n', '<leader><leader>', ':nohlsearch<CR>', {
   silent = true,
   desc = 'Clear search highlights'
 })
+
+-- Exit terminal mode with Esc
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+-- Open terminal on the right same directory as current buffer
+vim.keymap.set('n', '<leader>g', function()
+  vim.o.splitright = true
+  vim.cmd('vsplit')
+  local cwd = vim.fn.expand('%:p:h')
+  vim.cmd('cd ' .. vim.fn.fnameescape(cwd))
+  vim.cmd('terminal')
+  vim.cmd('startinsert')
+end)
 
 -- File manager
 vim.keymap.set("n", "<C-t>", ":Neotree toggle<CR>")

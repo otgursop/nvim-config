@@ -9,12 +9,12 @@ return {
     },
     lazy = false,
     opts = {
-      sources = { "filesystem", "buffers", "git_status" },
+      sources = { "filesystem" },
       source_selector = {
         winbar = true,
         statusline = false,
       },
-      
+
       window = {
         position = "left",
         width = 30,
@@ -25,8 +25,9 @@ return {
           ["?"] = "show_help",
         },
       },
-      
+
       filesystem = {
+        use_libuv_file_watcher = true,
         follow_current_file = { enabled = true },
         hijack_netrw_behavior = "open_default",
         filtered_items = {
@@ -36,13 +37,6 @@ return {
           hide_by_name = { ".DS_Store", "thumbs.db" },
         },
      },
-      buffers = {
-        follow_current_file = { enabled = true },
-        group_empty_dirs = true,
-      },
-      git_status = {
-        window = { position = "float" },
-      },
     },
   }
 }
