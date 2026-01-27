@@ -1,6 +1,6 @@
 -- Save and exit file
-vim.keymap.set('n', '<Leader>w', ':w<CR>', { noremap = true })
-vim.keymap.set('n', '<Leader>q', ':q<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>w', ':w<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>q', ':q<CR>', { noremap = true })
 
 -- Highlight yanked text
 vim.api.nvim_create_augroup("highlight_yank", { clear = true })
@@ -22,7 +22,7 @@ vim.keymap.set('n', '<leader><leader>', ':nohlsearch<CR>', {
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- File manager
-vim.keymap.set("n", "<Leader>e", ":Neotree toggle<CR>")
+vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>")
 
 -- Movement --
 -- Insert mode
@@ -34,16 +34,16 @@ vim.keymap.set('i', '<C-k>', '<Up>', { noremap = true })
 vim.keymap.set('i', '<C-l>', '<Right>', { noremap = true })
 
 -- Comment line
-vim.keymap.set('n', '<C-g>', ':Commentary<CR>')
-vim.keymap.set('v', '<C-g>', ':Commentary<CR>')
+vim.keymap.set('n', '<leader>g', ':Commentary<CR>')
+vim.keymap.set('v', '<leader>g', ':Commentary<CR>')
 
 -- Tabs
-vim.keymap.set('n', '<Leader>tn', ':tabnext<CR>', { desc = 'Next tab' })
-vim.keymap.set('n', '<Leader>tp', ':tabprevious<CR>', { desc = 'Previous tab' })
-vim.keymap.set('n', '<Leader>tt', ':tabnew<CR>', { desc = 'New tab' })
-vim.keymap.set('n', '<Leader>tf', ':tabnew ', { desc = 'New tab with file' })
-vim.keymap.set('n', '<Leader>tc', ':tabclose<CR>', { desc = 'Close tab' })
-vim.keymap.set('n', '<Leader>to', ':tabonly<CR>', { desc = 'Close other tabs' })
+vim.keymap.set('n', '<leader>tn', ':tabnext<CR>', { desc = 'Next tab' })
+vim.keymap.set('n', '<leader>tp', ':tabprevious<CR>', { desc = 'Previous tab' })
+vim.keymap.set('n', '<leader>tt', ':tabnew<CR>', { desc = 'New tab' })
+vim.keymap.set('n', '<leader>tf', ':tabnew ', { desc = 'New tab with file' })
+vim.keymap.set('n', '<leader>tc', ':tabclose<CR>', { desc = 'Close tab' })
+vim.keymap.set('n', '<leader>to', ':tabonly<CR>', { desc = 'Close other tabs' })
 
 -- Windows
 vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move to left window' })
