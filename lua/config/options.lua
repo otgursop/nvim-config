@@ -15,7 +15,7 @@ opt.cursorline = true
 
 -- Text & scroll
 opt.termguicolors = true
-opt.wrap = false
+opt.wrap = true
 
 opt.scrolloff = 4
 opt.sidescrolloff = 8

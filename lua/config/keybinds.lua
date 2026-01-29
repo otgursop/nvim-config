@@ -3,13 +3,10 @@ vim.keymap.set('n', '<leader>w', ':w<CR>', { noremap = true })
 vim.keymap.set('n', '<leader>q', ':q<CR>', { noremap = true })
 
 -- Highlight yanked text
-vim.api.nvim_create_augroup("highlight_yank", { clear = true })
-vim.api.nvim_create_autocmd("TextYankPost", {
-  group = "highlight_yank",
-  pattern = "*",
+vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
-    vim.highlight.on_yank { higroup = "IncSearch", timeout = 150 }
-  end,
+    vim.highlight.on_yank()
+  end
 })
 
 -- No highlight search
@@ -22,7 +19,8 @@ vim.keymap.set('n', '<leader><leader>', ':nohlsearch<CR>', {
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- File manager
-vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>")
+vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>')
+vim.keymap.set('n', '<C-e>', ':Neotree toggle<CR>')
 
 -- Movement --
 -- Insert mode
@@ -41,9 +39,9 @@ vim.keymap.set('v', '<leader>g', ':Commentary<CR>')
 vim.keymap.set('n', '<leader>tn', ':tabnext<CR>', { desc = 'Next tab' })
 vim.keymap.set('n', '<leader>tp', ':tabprevious<CR>', { desc = 'Previous tab' })
 vim.keymap.set('n', '<leader>tt', ':tabnew<CR>', { desc = 'New tab' })
-vim.keymap.set('n', '<leader>tf', ':tabnew ', { desc = 'New tab with file' })
 vim.keymap.set('n', '<leader>tc', ':tabclose<CR>', { desc = 'Close tab' })
-vim.keymap.set('n', '<leader>to', ':tabonly<CR>', { desc = 'Close other tabs' })
+-- vim.keymap.set('n', '<leader>tf', ':tabnew ', { desc = 'New tab with file' })
+-- vim.keymap.set('n', '<leader>to', ':tabonly<CR>', { desc = 'Close other tabs' })
 
 -- Windows
 vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move to left window' })
