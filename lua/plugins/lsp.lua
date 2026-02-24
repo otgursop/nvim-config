@@ -49,7 +49,7 @@ return {
         ["("] = { close = true, escape = false, pair = "()" },
         ["{"] = { close = true, escape = false, pair = "{}" },
         ["["] = { close = true, escape = false, pair = "[]" },
-        ["<"] = { close = true, escape = false, pair = "<>" },
+        -- ["<"] = { close = true, escape = false, pair = "<>" },
         
         [")"] = { escape = true, close = false },
         ["}"] = { escape = true, close = false },
