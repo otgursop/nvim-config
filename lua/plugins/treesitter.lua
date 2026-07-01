@@ -1,26 +1,31 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  lazy = false,
   build = ":TSUpdate",
+  lazy = false,
   config = function()
-    local langs = {
-      "c",
-      "cpp",
-      "lua",
-      "python",
-      "css",
-    }
-
-    local treesitter = require("nvim-treesitter")
-    treesitter.setup()
-    treesitter.install(langs)
-
-    vim.api.nvim_create_autocmd('FileType', {
-      pattern = langs,
-      callback = function()
-        vim.treesitter.start()
-        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-      end,
+    require("nvim-treesitter").setup({
+      ensure_installed = {
+        "c", "cpp", "lua", "python", "css", "rust",
+        "vim", "vimdoc", "query", "bash", "markdown", "markdown_inline" 
+      },
+      
+      auto_install = true,
+      
+      highlight = {
+        enable = true,
+        
+        disable = function(lang, buf)
+          local max_filesize = 100 * 1024 -- 100 KB
+          local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+          if ok and stats and stats.size > max_filesize then
+            return true
+          end
+        end,
+      },
+      
+      indent = {
+        enable = true,
+      },
     })
-  end
+  end,
 }

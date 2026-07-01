@@ -1,3 +1,5 @@
+local noarrows = true
+
 -- Save and exit file
 vim.keymap.set('n', '<leader>w', ':w<CR>', { noremap = true })
 vim.keymap.set('n', '<leader>q', ':q<CR>', { noremap = true })
@@ -19,17 +21,18 @@ vim.keymap.set('n', '<leader><leader>', ':nohlsearch<CR>', {
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- File manager
-vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>')
+-- vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>')
 vim.keymap.set('n', '<C-e>', ':Neotree toggle<CR>')
 
 -- Movement --
 -- Insert mode
 vim.keymap.set('i', 'jj', '<Esc>', { desc = 'Exit insert mode' })
 vim.keymap.set('i', 'kk', '<Esc>', { desc = 'Exit insert mode' })
-vim.keymap.set('i', '<C-h>', '<Left>', { noremap = true })
-vim.keymap.set('i', '<C-j>', '<Down>', { noremap = true })
-vim.keymap.set('i', '<C-k>', '<Up>', { noremap = true })
-vim.keymap.set('i', '<C-l>', '<Right>', { noremap = true })
+-- Normal mode
+vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move to left window' })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Move to bottom window' })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Move to top window' })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Move to right window' })
 
 -- Comment line
 vim.keymap.set('n', '<leader>g', ':Commentary<CR>')
@@ -43,8 +46,12 @@ vim.keymap.set('n', '<leader>tc', ':tabclose<CR>', { desc = 'Close tab' })
 -- vim.keymap.set('n', '<leader>tf', ':tabnew ', { desc = 'New tab with file' })
 -- vim.keymap.set('n', '<leader>to', ':tabonly<CR>', { desc = 'Close other tabs' })
 
--- Windows
-vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move to left window' })
-vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Move to bottom window' })
-vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Move to top window' })
-vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Move to right window' })
+if noarrows == true then
+  local noarrows = function()
+    print("skill issue?")
+  end
+  vim.keymap.set('n', '<Up>', noarrows, { desc = 'No arrow keys'})
+  vim.keymap.set('n', '<Down>', noarrows, { desc = 'No arrow keys'})
+  vim.keymap.set('n', '<Left>', noarrows, { desc = 'No arrow keys'})
+  vim.keymap.set('n', '<Right>', noarrows, { desc = 'No arrow keys'})
+end

@@ -1,62 +1,62 @@
-local opt = vim.opt
 local g = vim.g
+local opt = vim.opt
 
--- Leader
-g.mapleader = " "
-g.maplocalleader = " "
+-- Leader keys configuration
+g.mapleader = ' '             -- Set Space as the global leader key
+g.maplocalleader = '\\'       -- Set Backslash as the local leader key
 
--- Clipboard
-opt.clipboard = "unnamedplus"
+-- Clipboard settings
+opt.clipboard = 'unnamedplus' -- Use system clipboard for copy/paste operations
 
--- Numbers & highlight current line
-opt.number = true
-opt.relativenumber = true
-opt.cursorline = true
+-- Line numbering settings
+opt.number = true             -- Show absolute line numbers
+opt.relativenumber = true     -- Show relative line numbers (distance from cursor)
 
--- Text & scroll
-opt.termguicolors = true
-opt.wrap = true
+-- Backup and undo history settings
+opt.swapfile = false          -- Disable creation of swap files
+opt.backup = false            -- Disable creation of backup files
+opt.undofile = true           -- Enable persistent undo history across sessions
 
-opt.scrolloff = 4
-opt.sidescrolloff = 8
+-- Text wrapping and scrolling behavior
+opt.wrap = false              -- Disable automatic line wrapping
+opt.smoothscroll = true       -- Enable smooth scrolling animation
+opt.scrolloff = 4             -- Keep 4 lines visible above/below cursor vertically
+opt.sidescrolloff = 8         -- Keep 8 columns visible left/right of cursor horizontally
 
--- Tabs
-opt.tabstop = 2
-opt.shiftwidth = 2
-opt.softtabstop = 2
-opt.expandtab = true
-opt.smartindent = true
-opt.autoindent = true
+-- Status line and command display
+opt.showmode = false          -- Hide the current mode indicator in the status line
+opt.showcmd = true            -- Show partial commands in the last line of the screen
 
--- Windows split
-opt.splitbelow = true
-opt.splitright = true
+-- Mouse and cursor appearance
+opt.mouse = ''                -- Disable mouse support entirely
+opt.guicursor = ''            -- Use default terminal cursor shape (disable GUI overrides)
 
--- Search
-opt.ignorecase = true
-opt.smartcase = true
-opt.incsearch = true
-opt.hlsearch = true
+-- Window splitting behavior
+opt.splitright = true         -- Open new vertical splits to the right of current window
 
--- Mouse
-opt.mouse = "a"
+-- Indentation and tabulation settings
+opt.expandtab = true          -- Convert tabs into spaces when typing
+opt.smartindent = true        -- Enable smart auto-indentation for new lines
+opt.cindent = true            -- Enable C-style indentation rules
+opt.smarttab = true           -- Use shiftwidth for indentation at start of line
+opt.shiftwidth = 2            -- Number of spaces used for each step of indentation
+opt.softtabstop = 2           -- Number of spaces a Tab character counts for while editing
+opt.tabstop = 2               -- Number of spaces a Tab character represents in the file
 
--- File
-opt.swapfile = false
-opt.backup = false
-opt.undofile = true
+-- Search behavior settings
+opt.hlsearch = true           -- Highlight all matches of the last search pattern
+opt.incsearch = true          -- Jump to search match as you type the pattern
 
--- Complete menu
-opt.completeopt = { "menu", "menuone", "noselect" }
+-- Visual and color settings
+opt.termguicolors = true      -- Enable 24-bit RGB color support in terminal
+opt.cursorline = true         -- Highlight the line where the cursor is currently located
 
--- Line
-opt.showmode = false
-opt.showcmd = true
+-- Performance optimization settings
+opt.updatetime = 50           -- Reduce delay for CursorHold events (faster LSP/diagnostics)
 
--- Ex
-vim.g.netrw_banner = 0
-vim.g.netrw_liststyle = 3
+-- Syntax and concealment settings
+opt.conceallevel = 2          -- Hide concealed text markers (useful for Markdown/JSON)
 
--- Perfomance
-opt.updatetime = 50
-
+-- Netrw file explorer settings
+vim.g.netrw_banner = 0        -- Hide the header banner in the built-in file explorer
+vim.g.netrw_liststyle = 3     -- Set file explorer view to tree-like structure
