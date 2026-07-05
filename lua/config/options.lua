@@ -18,7 +18,7 @@ opt.backup = false            -- Disable creation of backup files
 opt.undofile = true           -- Enable persistent undo history across sessions
 
 -- Text wrapping and scrolling behavior
-opt.wrap = false              -- Disable automatic line wrapping
+opt.wrap = true               -- Disable automatic line wrapping
 opt.smoothscroll = true       -- Enable smooth scrolling animation
 opt.scrolloff = 4             -- Keep 4 lines visible above/below cursor vertically
 opt.sidescrolloff = 8         -- Keep 8 columns visible left/right of cursor horizontally
