@@ -6,7 +6,7 @@ return {
     require("nvim-treesitter").setup({
       ensure_installed = {
         "c", "cpp", "lua", "python", "css", "rust",
-        "vim", "vimdoc", "query", "bash", "markdown", "markdown_inline" 
+        "vim", "vimdoc", "query", "bash", "markdown", "markdown_inline"
       },
       
       auto_install = true,

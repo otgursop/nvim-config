@@ -28,8 +28,8 @@ opt.showmode = false          -- Hide the current mode indicator in the status l
 opt.showcmd = true            -- Show partial commands in the last line of the screen
 
 -- Mouse and cursor appearance
-opt.mouse = ''                -- Disable mouse support entirely
-opt.guicursor = ''            -- Use default terminal cursor shape (disable GUI overrides)
+opt.mouse = 'a'                -- Enable mouse support in all modes
+opt.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20' -- Enable cursor shape changes without blinking
 
 -- Window splitting behavior
 opt.splitright = true         -- Open new vertical splits to the right of current window
@@ -52,7 +52,7 @@ opt.termguicolors = true      -- Enable 24-bit RGB color support in terminal
 opt.cursorline = true         -- Highlight the line where the cursor is currently located
 
 -- Performance optimization settings
-opt.updatetime = 50           -- Reduce delay for CursorHold events (faster LSP/diagnostics)
+opt.updatetime = 25           -- Reduce delay for CursorHold events (faster LSP/diagnostics)
 
 -- Syntax and concealment settings
 opt.conceallevel = 2          -- Hide concealed text markers (useful for Markdown/JSON)
